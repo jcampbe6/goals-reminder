@@ -16,7 +16,7 @@ public class EditGoalActivity extends Activity
 	private Long mRowId;
 	private GoalsDbAdapter mDbHelper;
 	
-	private boolean cancel;
+	private boolean save;
 	private Button cancelButton;
 	private Button saveButton;
 	
@@ -33,11 +33,10 @@ public class EditGoalActivity extends Activity
 		mBodyText = (EditText) findViewById(R.id.editTextDescription_Content);
 		
 		saveButton = (Button) findViewById(R.id.saveButton);
+		save = false;
 		cancelButton = (Button) findViewById(R.id.cancelButton);
-		cancel = false;
 		
-		mRowId = (savedInstanceState == null) ? null : (Long) savedInstanceState
-				.getSerializable(GoalsDbAdapter.KEY_ROWID);
+		mRowId = (savedInstanceState == null) ? null : (Long) savedInstanceState.getSerializable(GoalsDbAdapter.KEY_ROWID);
 		if (mRowId == null)
 		{
 			Bundle extras = getIntent().getExtras();
@@ -54,27 +53,23 @@ public class EditGoalActivity extends Activity
 				String body = mBodyText.getText().toString();
 				if (!title.matches(""))
 				{
+					save = true;
 					setResult(RESULT_OK);
 					finish();
 				}
 				else if (title.matches("") && !body.matches(""))
-				{
-					Toast.makeText(getApplicationContext(), "Please enter a title.",
-							Toast.LENGTH_SHORT).show();
-				}
+					Toast.makeText(getApplicationContext(), "Please enter a title.", Toast.LENGTH_SHORT).show();
 				else
-					Toast.makeText(getApplicationContext(), "You did not enter any information.",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "You did not enter any information.", Toast.LENGTH_SHORT).show();
 			}
 		});
 		
-		this.cancelButton.setOnClickListener(new View.OnClickListener()
+		cancelButton.setOnClickListener(new View.OnClickListener()
 		{
 			public void onClick(View view)
 			{
-				cancel = true;
-				Intent intent = new Intent(getApplicationContext(), Main.class);
-				startActivity(intent);
+				setResult(RESULT_OK);
+				finish();
 			}
 		});
 	}
@@ -116,23 +111,18 @@ public class EditGoalActivity extends Activity
 	{
 		String title = mTitleText.getText().toString();
 		String body = mBodyText.getText().toString();
-		if (mRowId == null && !title.matches("") && !cancel)
+		if (mRowId == null && !title.matches("") && save)
 		{
 			long id = mDbHelper.createGoal(title, body);
 			if (id > 0)
 			{
 				mRowId = id;
 			}
-			cancel = false;
 		}
-		else if (title.matches("") || cancel)
-		{
-			Toast.makeText(getApplicationContext(), "Please enter a title", Toast.LENGTH_SHORT).show();
-		}
-		else
+		
+		else if (!title.matches("") && save)
 		{
 			mDbHelper.updateGoal(mRowId, title, body);
-			cancel = false;
 		}
 	}
 }
