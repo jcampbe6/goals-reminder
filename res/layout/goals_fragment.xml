@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffadadad" >
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer_button_bar"
+        android:layout_alignParentTop="true"
+        android:choiceMode="multipleChoice"
+        android:longClickable="true" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="20.0dip"
+        android:text="@string/no_goals"
+        android:textSize="20.0sp" />
+
+    <LinearLayout
+        android:id="@+id/footer_button_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true"
+        android:background="#ff000000"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/newGoalButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:drawableStart="@drawable/ic_action_new"
+            android:text="@string/menu_insert"
+            android:textColor="#ffffffff" />
+
+        <View
+            android:id="@+id/buttonDivider"
+            android:layout_width="1.0dip"
+            android:layout_height="42.0dip"
+            android:layout_marginBottom="4.0dip"
+            android:layout_marginTop="4.0dip"
+            android:background="#ffffffff" />
+
+        <Button
+            android:id="@+id/deleteGoalsButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:drawableStart="@drawable/ic_action_discard"
+            android:text="@string/menu_delete"
+            android:textColor="#ffffffff" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/buttonDivider_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffffff" />
+
+</RelativeLayout>
