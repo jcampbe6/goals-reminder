@@ -4,9 +4,11 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.goals_reminder.ResolutionsFragment"
+            android:label="@string/title_activity_resolutions_fragment" />
+        <activity
+            android:name="com.example.goals_reminder.RemindersFragment"
+            android:label="@string/title_activity_reminders_fragment" />
+        <activity
+            android:name="com.example.goals_reminder.EditGoalActivity"
+            android:label="@string/title_activity_edit_goal"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.goals_reminder.GoalsFragment"
+            android:label="@string/title_activity_goals_fragment" />
     </application>
 
 </manifest>
