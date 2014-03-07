@@ -1,19 +1,27 @@
 package com.example.goals_reminder;
 
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
-public class Main extends FragmentActivity implements ActionBar.TabListener
+public class Main extends FragmentActivity implements TabListener
 {
+	// Variable declarations
 	private ViewPager viewPager;
-	private TabsPagerAdapter mAdapter;
+	private TabsPagerAdapter pagerAdapter;
 	private ActionBar actionBar;
 	private String[] tabs = { "Resolutions / Goals", "Reminders" };
 	
+	/**
+	 * Initializes activity with an action bar, sets the tabs on the action bar,
+	 * and sets the pager and pager adapter to change page when page swipe occurs.
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -21,48 +29,51 @@ public class Main extends FragmentActivity implements ActionBar.TabListener
 		setContentView(R.layout.main_activity);
 		
 		// Initialization
-		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
-		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		viewPager = (ViewPager) findViewById(R.id.pager);
+		pagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		
-		viewPager.setAdapter(mAdapter);
+		viewPager.setAdapter(pagerAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
-		// Adding Tabs
+		/**
+		 * Adds tabs to the action bar with their corresponding names.
+		 */
 		for (String tab_name : tabs)
 		{
 			actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
 		}
 		
 		/**
-		 * on swiping the viewpager make respective tab selected
+		 * Sets a page change listener to change the page when page swiped.
 		 */
-		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int position)
 			{
 				actionBar.setSelectedNavigationItem(position);
 			}
-
+			
+			//not used
 			public void onPageScrollStateChanged(int arg0){}
-					
+			//not used
 			public void onPageScrolled(int arg0, float arg1, int arg2){}	
 		});
 	}
 	
-	public void onTabReselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction)
-	{
-	}
-	
+	/**
+	 * Shows the corresponding page when a tab is selected on action bar.
+	 */
 	public void onTabSelected(Tab tab, FragmentTransaction ft)
 	{
-		// show respected fragment view when tab selected
 		viewPager.setCurrentItem(tab.getPosition());
 	}
 	
-	public void onTabUnselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction)
-	{
-	}
+	//not used
+	public void onTabReselected(Tab tab, FragmentTransaction ft){}
+	
+	//not used
+	public void onTabUnselected(Tab tab, FragmentTransaction ft){}
 }
