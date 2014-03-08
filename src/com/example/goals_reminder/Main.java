@@ -1,6 +1,5 @@
 package com.example.goals_reminder;
 
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;

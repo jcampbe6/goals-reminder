@@ -1,7 +1,6 @@
 package com.example.goals_reminder;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
