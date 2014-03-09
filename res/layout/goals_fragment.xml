@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffadadad" >
+    android:background="#292729" >
 
     <ListView
         android:id="@android:id/list"
@@ -10,7 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/footer_button_bar"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:choiceMode="multipleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
         android:longClickable="true" />
 
     <TextView
@@ -25,45 +30,58 @@
     <LinearLayout
         android:id="@+id/footer_button_bar"
         android:layout_width="fill_parent"
-        android:layout_height="50.0dip"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#ff000000"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/newGoalButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:drawableStart="@drawable/ic_action_new"
-            android:text="@string/menu_insert"
-            android:textColor="#ffffffff" />
+        android:orientation="vertical" >
 
         <View
-            android:id="@+id/buttonDivider"
-            android:layout_width="1.0dip"
-            android:layout_height="42.0dip"
-            android:layout_marginBottom="4.0dip"
-            android:layout_marginTop="4.0dip"
+            android:id="@+id/buttonDivider_top"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
             android:background="#ffffffff" />
 
-        <Button
-            android:id="@+id/deleteGoalsButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:drawableStart="@drawable/ic_action_discard"
-            android:text="@string/menu_delete"
-            android:textColor="#ffffffff" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/buttonRow"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:orientation="horizontal" >
 
-    <View
+            <Button
+                android:id="@+id/newGoalButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:drawableStart="@drawable/ic_action_new"
+                android:text="@string/menu_insert"
+                android:textColor="#ffffffff" />
+
+            <View
+                android:id="@+id/buttonDividerBetween"
+                android:layout_width="1.0dip"
+                android:layout_height="42.0dip"
+                android:layout_marginBottom="4.0dip"
+                android:layout_marginTop="4.0dip"
+                android:background="#ffffffff" />
+
+            <Button
+                android:id="@+id/deleteGoalsButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:drawableStart="@drawable/ic_action_discard"
+                android:text="@string/menu_delete"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
+        
+        <View
         android:id="@+id/buttonDivider_bottom"
         android:layout_width="fill_parent"
         android:layout_height="1.0dip"
-        android:layout_alignParentBottom="true"
         android:background="#ffffffff" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

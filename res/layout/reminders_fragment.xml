@@ -35,7 +35,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="0.07"
             android:contentDescription="@string/reminder_image_content_description"
-            android:src="@drawable/ic_action_reminder" />
+            android:src="@drawable/ic_icon_reminder" />
 
         <TextView
             android:id="@+id/set_reminder_textView"

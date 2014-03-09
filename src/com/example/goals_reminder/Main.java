@@ -15,7 +15,7 @@ public class Main extends FragmentActivity implements TabListener
 	private ViewPager viewPager;
 	private TabsPagerAdapter pagerAdapter;
 	private ActionBar actionBar;
-	private String[] tabs = { "Resolutions / Goals", "Reminders" };
+	private String[] tabs = { "Goals / Resolutions", "Reminders" };
 	
 	/**
 	 * Initializes activity with an action bar, sets the tabs on the action bar,

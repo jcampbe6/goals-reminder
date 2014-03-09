@@ -126,9 +126,9 @@ public class GoalsFragment extends ListFragment
 	}
 	
 	@Override
-	public void onListItemClick(ListView lv, View v, int position, long id)
+	public void onListItemClick(ListView lv, View view, int position, long id)
 	{
-		super.onListItemClick(lv, v, position, id);
+		super.onListItemClick(lv, view, position, id);
 	}
 	
 	@Override
