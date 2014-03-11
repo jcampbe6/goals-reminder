@@ -1,4 +1,4 @@
-package com.example.goals_reminder;
+package com.goalsreminder.app;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

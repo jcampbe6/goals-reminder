@@ -1,4 +1,4 @@
-package com.example.goals_reminder;
+package com.goalsreminder.app;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

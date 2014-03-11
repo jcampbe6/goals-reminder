@@ -1,4 +1,4 @@
-package com.example.goals_reminder;
+package com.goalsreminder.app;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +22,7 @@ public class GoalsFragment extends ListFragment
 	private Button deleteButton;
 	private Button newGoalButton;
 	private GoalsDbAdapter databaseHelper;
+	private ListView goalsListView;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -47,16 +48,16 @@ public class GoalsFragment extends ListFragment
 			public void onClick(View view)
 			{
 				// Checks for an empty goals list and alerts user if list is empty
-				if (getListView().getCount() == 0)
+				if (goalsListView.getCount() == 0)
 					Toast.makeText(getActivity(), "Nothing to delete", Toast.LENGTH_SHORT).show();
 				
 				/*
 				 *  If the list is not empty, then it checks to see if any list items are selected, and deletes
 				 *  any selected items.
 				 */
-				else if (getListView().getCheckedItemIds().length != 0)
+				else if (goalsListView.getCheckedItemIds().length != 0)
 				{
-					for (long id: getListView().getCheckedItemIds())
+					for (long id: goalsListView.getCheckedItemIds())
 					{
 						databaseHelper.deleteGoal(id);
 					}
@@ -79,8 +80,10 @@ public class GoalsFragment extends ListFragment
 	{
 		super.onActivityCreated(savedInstanceState);
 		
+		goalsListView = getListView();
+		
 		// Sets a long click listener on the list view to open edit goal activity 
-		getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+		goalsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 		{
 			public boolean onItemLongClick(AdapterView<?> arg0, View view, int position, long id)
 			{
@@ -121,8 +124,8 @@ public class GoalsFragment extends ListFragment
 	 */
 	private void createGoal()
 	{
-		Intent i = new Intent(getActivity(), EditGoalActivity.class);
-		startActivityForResult(i, ACTIVITY_CREATE);
+		Intent intent = new Intent(getActivity(), EditGoalActivity.class);
+		startActivityForResult(intent, ACTIVITY_CREATE);
 	}
 	
 	@Override

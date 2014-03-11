@@ -1,4 +1,4 @@
-package com.example.goals_reminder;
+package com.goalsreminder.app;
 
 import android.content.ContentValues;
 import android.content.Context;

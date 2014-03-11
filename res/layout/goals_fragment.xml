@@ -23,9 +23,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="20.0dip"
+        android:paddingTop="20dip"
         android:text="@string/no_goals"
-        android:textSize="20.0sp" />
+        android:textSize="30sp"
+        android:textColor="#ffffff" />
 
     <LinearLayout
         android:id="@+id/footer_button_bar"
