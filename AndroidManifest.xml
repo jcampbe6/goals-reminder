@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.goalsreminder.app"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.1" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -33,10 +33,20 @@
         <activity
             android:name="com.goalsreminder.app.EditGoalActivity"
             android:label="@string/title_activity_edit_goal" />
-            <!--  android:windowSoftInputMode="stateHidden"--> 
+        <!-- android:windowSoftInputMode="stateHidden" -->
         <activity
             android:name="com.goalsreminder.app.GoalsFragment"
             android:label="@string/title_activity_goals_fragment" />
+
+        <receiver android:name="widget_tester.MyWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@ public class GoalsDbAdapter
 	private SQLiteDatabase mDb;
 	
 	/**
-	 * Database creation sql statment
+	 * Database creation sql statement
 	 */
 	private static final String DATABASE_CREATE = "create table goals (_id integer primary key autoincrement, title text not null, body text not null);";
 	
@@ -157,5 +157,11 @@ public class GoalsDbAdapter
 		args.put(KEY_BODY, body);
 		
 		return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+	}
+	
+	public Cursor getCount()
+	{
+		String countQuery = "SELECT  * FROM " + DATABASE_TABLE;
+		return mDb.rawQuery(countQuery, null);
 	}
 }
