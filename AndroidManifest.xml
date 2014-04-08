@@ -38,7 +38,12 @@
             android:name="com.goalsreminder.app.GoalsFragment"
             android:label="@string/title_activity_goals_fragment" />
 
-        <receiver android:name="widget_tester.MyWidgetProvider" >
+        <provider
+            android:name=".contentprovider.GoalsDbContentProvider"
+            android:authorities="com.goalsreminder.contentprovider" >
+        </provider>
+
+        <receiver android:name="com.goalsreminder.widget.MyWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

@@ -10,6 +10,10 @@ import android.util.Log;
 
 public class GoalsDbAdapter
 {
+	private static final String DATABASE_NAME = "goals_data";
+	public static final String DATABASE_TABLE = "goals";
+	private static final int DATABASE_VERSION = 4;
+	
 	public static final String KEY_TITLE = "title";
 	public static final String KEY_BODY = "body";
 	public static final String KEY_ROWID = "_id";
@@ -22,10 +26,6 @@ public class GoalsDbAdapter
 	 * Database creation sql statement
 	 */
 	private static final String DATABASE_CREATE = "create table goals (_id integer primary key autoincrement, title text not null, body text not null);";
-	
-	private static final String DATABASE_NAME = "goals_data";
-	private static final String DATABASE_TABLE = "goals";
-	private static final int DATABASE_VERSION = 4;
 	
 	private final Context mContext;
 	
@@ -47,7 +47,7 @@ public class GoalsDbAdapter
 		{
 			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 					+ newVersion + ", which will destroy all old data");
-			db.execSQL("DROP TABLE IF EXISTS goals");
+			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
 			onCreate(db);
 		}
 	}

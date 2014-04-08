@@ -1,4 +1,4 @@
-package widget_tester;
+package com.goalsreminder.widget;
 
 import java.util.Random;
 import com.goalsreminder.app.GoalsDbAdapter;
